@@ -14,8 +14,6 @@ app.use(require("./routes/auth"));
 app.use(require("./routes/createpost"));
 app.use(require("./routes/user"));
 
-
-
 // server front
 // app.use(express.static(path.join(__dirname, "..", "frontend", "build")))
 
@@ -28,8 +26,8 @@ app.use(require("./routes/user"));
 //   )
 // })
 
-app.listen(port, () => {
-  mongoose.connect(mongoUrl);
+app.listen(port, async () => {
+  await mongoose.connect("mongodb+srv://fazliddin-insta:7jzDsSxzinoekc6v@cluster0.wc0hfa2.mongodb.net/?retryWrites=true&w=majority");
   mongoose.connection.on("connected", () => {
     console.log("successfully connected to mongo");
   });
