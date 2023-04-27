@@ -1,8 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const mongoose = require("mongoose");
 const requireLogin = require("../middlewares/requireLogin");
-const POST = mongoose.model("POST");
+const POST = require("../models/post")
 
 router.get("/allposts", requireLogin, (req, res) => {
   POST.find()

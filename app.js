@@ -10,19 +10,11 @@ app.use(cors());
 app.options("*", cors());
 app.use(express.json());
 
-require("./models/model");
-require("./models/post");
 app.use(require("./routes/auth"));
 app.use(require("./routes/createpost"));
 app.use(require("./routes/user"));
 
-mongoose.connect(mongoUrl);
-mongoose.connection.on("connected", () => {
-  console.log("successfully connected to mongo");
-});
-mongoose.connection.on("error", () => {
-  console.log("not connected yo mongodb");
-});
+
 
 // server front
 // app.use(express.static(path.join(__dirname, "..", "frontend", "build")))
@@ -37,5 +29,12 @@ mongoose.connection.on("error", () => {
 // })
 
 app.listen(port, () => {
+  mongoose.connect(mongoUrl);
+  mongoose.connection.on("connected", () => {
+    console.log("successfully connected to mongo");
+  });
+  mongoose.connection.on("error", () => {
+    console.log("not connected yo mongodb");
+  });
   console.log("server is running on port" + " " + port);
 });
