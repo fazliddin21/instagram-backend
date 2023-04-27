@@ -6,7 +6,9 @@ const { mongoUrl } = require("./keys");
 const cors = require("cors");
 const path = require("path")
 
-app.use(cors());
+app.use(cors({
+  origin: "https://instagram-frontend-tau.vercel.app/"
+}));
 
 require("./models/model");
 require("./models/post");
