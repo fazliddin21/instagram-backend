@@ -15,6 +15,7 @@ router.post("/registration", (req, res) => {
   if (!name || !email || !userName || !password) {
     return res.status(422).json({ error: "Please enter all information" });
   }
+  return res.json("Register Succesfully")
   USER.findOne({ $or: [{ email: email }, { userName: userName }] }).then(
     (savedUSer) => {
       if (savedUSer) {
