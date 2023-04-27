@@ -7,7 +7,7 @@ const cors = require("cors");
 const path = require("path")
 
 app.use(cors({
-  origin: "https://instagram-frontend-tau.vercel.app/"
+  origin: true
 }));
 
 require("./models/model");
