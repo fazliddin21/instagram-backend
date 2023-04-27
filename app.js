@@ -8,10 +8,10 @@ const path = require("path")
 
 app.use(cors());
 app.options("*", cors());
+app.use(express.json());
 
 require("./models/model");
 require("./models/post");
-app.use(express.json());
 app.use(require("./routes/auth"));
 app.use(require("./routes/createpost"));
 app.use(require("./routes/user"));
