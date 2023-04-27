@@ -35,11 +35,14 @@ router.post("/registration", (req, res) => {
             res.json({ massage: "Registir successfully" });
           })
           .catch((err) => {
-            console.log(err);
+            return res.status(500).json(err);
           });
       });
     }
-  );
+  )
+  .catch(e => {
+    return res.status(500).json(e);
+  });
 });
 // Login backend
 router.post("/login", (req, res) => {
