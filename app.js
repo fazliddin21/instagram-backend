@@ -6,9 +6,8 @@ const { mongoUrl } = require("./keys");
 const cors = require("cors");
 const path = require("path")
 
-app.use(cors({
-  origin: true
-}));
+app.use(cors());
+app.options("*", cors());
 
 require("./models/model");
 require("./models/post");
@@ -28,7 +27,7 @@ mongoose.connection.on("error", () => {
 // server front
 // app.use(express.static(path.join(__dirname, "..", "frontend", "build")))
 
-// app.get("*", (req,res)=>{
+// app.get("*", (req,res) => {
 //   res.sendFile(
 //     path.join (__dirname, "..", "frontend", "build", "index.html"),
 //     function (err) {
@@ -36,8 +35,6 @@ mongoose.connection.on("error", () => {
 //     }
 //   )
 // })
-
-
 
 app.listen(port, () => {
   console.log("server is running on port" + " " + port);
